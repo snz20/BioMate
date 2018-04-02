@@ -1,0 +1,61 @@
+
+.truncate {
+	/*width: 250px;*/
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#userName{
+	font-size:1.2em;
+	color:white;
+	cursor: default;
+}
+#lab-bench-layout .row {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+
+body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+textarea{
+	resize: none;
+}
+
+.lab-bench-labels {
+	font-weight: bold;
+}
+
+.table-hover tbody tr.highlight > td { 
+	background-color: #a9dba9;
+  	/* border-color: #46a546; */
+}
+
+#loadParamsTable a { 
+	text-decoration: none; 
+}
+
+.tooltip-inner {
+    white-space:pre-wrap;
+}
+
+.scriptSpecific {
+	display: none;
+}
+
+#savedMsg {
+	display: none;
+}
+
+#loadParamsTableBody td:hover {
+    cursor: pointer;
+}
+
+#bioMateBrand {
+    font-size: 6em;
+    font-family: 'Tulpen One', cursive;
+}
+
+body { padding-top: 10em; }

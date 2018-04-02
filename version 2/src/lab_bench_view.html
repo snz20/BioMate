@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BioMate - Use a Script</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- styles -->
+    <link href='http://fonts.googleapis.com/css?family=Tulpen+One' rel='stylesheet' type='text/css'>
+	<link href="../external/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../external/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../css/cus-icons.css" rel="stylesheet">
+    <link href="../css/lab_bench_view.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container" id="topNav">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" id="bioMateBrand" href="biomate_home.html">BioMate</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+<!-- 
+              <li><a href="#">Home</a></li>
+              <li><a href="#logout">Log Out</a></li>
+ -->
+ 			  <li><p class="navbar-text" id="userName"></p></li>
+ 			  <li><a href="biomate_home.html"><i class="icon-home icon-white"></i></a></li>
+			  <li><a href="programmer_facing.html"><i class="cus-createScriptIcon cus-white"></i></a></li>
+			  <li><a href="lab_bench_view.html"><i class="cus-runScriptIcon cus-white"></i></a></li>           		  				  <li><button class="btn btn-danger" type="submit" id="btnSignOut">
+				<i class="icon-off icon-white"></i>
+				</button></li>
+		</ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+		<h2>Use a Script</h2>
+	  </div>
+	  
+	  <div id="lab-bench-layout">
+	    <div class="row">
+	      <div class="span2">
+		    <label id="selectScriptLbl" class="lab-bench-labels" data-toggle="tooltip" title="Browse a script from the scripts that have been shared with you. Select a script to bring up the screen to specify your desired parameter values." for="inputScript">Select Script</label>
+		  </div>
+		  <div class="span9">
+	        <select id="inputScript" class="input-block-level">
+			  <option>Select a script...</option>
+			</select>
+		  </div>
+		  <div class="scriptSpecific">
+		    <div class="span3 offset2">
+			  <div class="modal hide fade" id="notes">
+			    <div class="modal-header">
+			      <a class="close" data-dismiss="modal">×</a>
+				  <h3>Note on <span class="scriptName"></span></h3>
+				</div>
+				<div class="modal-body">
+				  <textarea rows="5" class="input-block-level" id="noteContents" autofocus></textarea>
+				</div>
+				<div class="modal-footer">
+				  <a href="#" class="btn" data-dismiss="modal">Close</a>
+				  <a href="#" id="saveNoteBtn" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+				</div>
+			  </div>
+			  <a id="notesBtn" class="btn btn-block" data-toggle="modal" href="#" >Note on <span class="scriptName"></span></a>
+			</div>
+			<div class="span3">
+			  <div class="modal hide fade" id="instructions">
+			    <div class="modal-header">
+			      <a class="close" data-dismiss="modal">×</a>
+				  <h3>Instructions</h3>
+				</div>
+				<div class="modal-body">
+				  <p id="instructionsContents">Runs a Monte Carlo simulation. If you have trouble, talk to X in the lab.</p>
+				</div>
+				<div class="modal-footer">
+				  <a href="#" class="btn" data-dismiss="modal">Close</a>
+				</div>
+			  </div>
+			  <a id="notesBtn" class="btn btn-block" data-toggle="modal" href="#instructions" >Instructions</a>
+			</div>
+			<div class="span3">
+		      <div class="modal hide fade" id="loadParams">
+			    <div class="modal-header">
+			      <a class="close" data-dismiss="modal">×</a>
+				  <h3>Load Saved Parameter Settings for <span class="scriptName"></span></h3>
+				</div>
+				<div class="modal-body">
+                    <table id="loadParamsTable" width="500px" class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Saved At</th>
+                            </tr>
+                        </thead>
+                        <tbody id="loadParamsTableBody">
+                        </tbody>
+                    </table>
+				</div>
+				<div class="modal-footer">
+				  <a href="#" class="btn" data-dismiss="modal">Close</a>
+				</div>
+			  </div>
+			  <a id="loadParamsBtn" class="btn btn-block" data-toggle="modal" href="#" >Load Parameters</a>
+		    </div>
+		  </div>
+		</div>
+		<div class="row scriptSpecific">
+	      <div class="span2">
+		    <label class="lab-bench-labels" for="caveats">Caveats</label>
+		  </div>
+		  <div class="span6">
+	        <span id="caveats" class="truncate text-warning"></span>
+		  </div>
+		</div>
+		<div class="row scriptSpecific">
+			<label for="required" class="span12 lab-bench-labels">Required Fields</label>
+			<div id="required" class="well well-small span12">
+			</div>
+		</div>
+		<div class="row scriptSpecific">
+			<label for="optional" class="span12 lab-bench-labels">Optional Fields</label>
+			<div id="optional" class="well well-small span12">
+			</div>
+		</div>
+		<div class="row scriptSpecific">
+			<div class="span3">
+				<div class="modal hide fade" id="genCommand">
+					<div class="modal-header">
+						<a class="close" data-dismiss="modal">×</a>
+						<h3>Cut and Paste into your Command Line</h3>
+					</div>
+					<div class="modal-body">
+						<p id="commandText"></p>
+					</div>
+					<div class="modal-footer">
+						<a href="#" class="btn" data-dismiss="modal">Close</a>
+						<a href="#" id="saveToNotesBtn" class="btn btn-primary">Save to Notes</a>
+					</div>
+				</div>
+				<a class="btn btn-block btn-primary" id="generateBtn" data-toggle="modal" href="#genCommand" >Generate Command</a>
+			</div>
+			<div class="span3">
+				<div class="modal hide fade" id="saveParams">
+					<div class="modal-header">
+						<a class="close" data-dismiss="modal">×</a>
+						<h3>Enter Name of Parameter Settings for <span class="scriptName"></span></h3>
+					</div>
+					<div class="modal-body">
+						<input id="paramsName" class="input-block-level" type="text" placeholder="Enter Name of Parameter Settings"></input>
+					</div>
+					<div class="modal-footer">
+						<a href="#" class="btn" data-dismiss="modal">Close</a>
+						<a href="#" class="btn btn-primary" data-dismiss="modal" id="saveParamsBtn">Save</a>
+					</div>
+				</div>
+				<a class="btn btn-block" id="saveParameters" data-toggle="modal" href="#saveParams" >Save Parameters</a>
+			</div>
+			<div class="span6">
+				<p class="text-success" id="savedMsg">Saved Parameters</p>
+			</div>
+		</div>
+	</div>
+</div> <!-- /container -->
+
+
+<!-- javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="../external/jquery/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="../external/jquery/js/parse-1.2.7.min.js"></script>
+<script type="text/javascript" src="../external/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../jscript/biomate_util.js"></script>
+<script type="text/javascript" src="../jscript/parse_objects.js"></script>
+<script type="text/javascript" src="../jscript/lab_bench_view_dynamic.js"></script>
+<script type="text/javascript" src="../jscript/lab_bench_view.js"></script>
+</body>
+</html>

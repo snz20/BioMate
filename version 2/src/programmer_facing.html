@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Create/Edit a script</title>
+	<link href='http://fonts.googleapis.com/css?family=Tulpen+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../external/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" />
+	
+	<script language="JavaScript" type="text/javascript" src="../jscript/dragging/core.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../jscript/dragging/events.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../jscript/dragging/css.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../jscript/dragging/coordinates.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../jscript/dragging/drag.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../jscript/dragging/dragsort.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../jscript/dragging/cookies.js"></script>
+	
+	<script src="../external/jquery/js/jquery-1.9.0.min.js"></script>
+	<script src="../external/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+	<script src="../external/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../external/jquery/js/parse-1.2.7.min.js"></script>
+	<script type="text/javascript" src="../jscript/parse_objects.js"></script>
+	<script type="text/javascript" src="../jscript/programmer_facing.js"></script>
+	<script type="text/javascript" src="../jscript/biomate_util.js"></script>
+	<link href="../external/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="../external/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="../css/cus-icons.css" rel="stylesheet">
+	<link href="../css/programmer_facing.css" rel="stylesheet">
+	<script src="../external/bootstrap/js/bootstrap-popover.js"></script>  
+	<script src="../external/bootstrap/js/bootstrap-tooltip.js"></script>
+	
+	
+
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container" id="topNav">
+			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				 <span class="icon-bar"></span>
+			</button>
+			<a class="brand" id="bioMateBrand" href="#biomate_home.html">BioMate</a>
+			<div class="nav-collapse collapse">
+				<ul class="nav pull-right" >
+					<li><p class="navbar-text" id="userName"></p></li>
+ 			  		<li><a href="biomate_home.html"><i class="icon-home icon-white"></i></a></li>
+					<li><a href="programmer_facing.html"><i class="cus-createScriptIcon cus-white"></i></a></li>
+					  <li><a href="lab_bench_view.html"><i class="cus-runScriptIcon cus-white"></i></a></li>           		  				  <li><button class="btn btn-danger" type="submit" id="btnSignOut">
+						<i class="icon-off icon-white"></i>
+						</button></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container" id="mainContainer">
+	<div class="page-header">
+		<h2 id="pageHeaderContents">Create/Edit a script</h2>
+	</div>
+	
+	<div class="ui-widget" id="scriptSelection">
+		<input id="enterTitle" class="input-block-level" type="text" placeholder="Enter script title or select from list"> </input> <button type="createScript" class="btn" id="createLoadScriptBtn">Create/Edit Script</button>
+	</div>
+	
+	<div id='programmer-layout' style="display: none;">
+		<div class='row'>
+			<div class='span4'>
+				<a class="btn btn-block btn-success mainAddStaticTextBtn" href='#staticTextWindow' id='addStaticText' title="Used to build invariant parts of the command not associated with parameters or flags">Add Static Text</a>
+			</div>
+			<div class='span4'>
+				<a class="btn btn-block btn-success" title="Use this to add parameters or flags, eg: inputFile, --verbosity, etc." id='addParamMainBtn' href='#addParamWindow'>Add Parameter/Flag</a>
+			</div>
+			<div class='span4'>
+				<a class="btn btn-block" data-toggle='modal' href='#moreInfoWindow'>More Information</a>
+			</div>
+		</div>
+		<ul class='container' id='chunksContainer'><div id='infoMessage'>Use the buttons above to construct the command here, chunk by chunk</div></ul>
+		<table class='table' id='paramsTable' style="display: none;">
+			<thead>
+			<tr>
+				<th>
+					<label class='popupLabel' data-toggle='tooltip' title="Programmer-defined name for referring to the parameter/flag">Alias</label>
+				</th>
+				<th>
+					<label class='popupLabel' data-toggle='tooltip' title="Category of the input">Input Type</label>
+				</th>
+				<th>
+					<label class='popupLabel' data-toggle='tooltip' title="The prefix/flag (if any) that comes before the parameter; can be blank, but required if input type is set to flag">Prefix/Flag</label>
+				</th>
+				<th>
+					<label class='popupLabel' data-toggle='tooltip' title="A user friendly name visible to the users; this is how the input field will be labelled">User-Friendly Name</label>
+				</th>
+				<th>
+					<label class="popupLabel exitAddParamOnEnter" data-toggle='tooltip' title="Check if the parameter is required; does not apply to flags">Required?</label>
+				</th>
+				<th>
+					<label class='popupLabel' data-toggle='tooltip' title="For optional parameters, this is a default value that appears with pending delete. For required parameters, this is a suggested value that appears as a placeholder. For flags, this is 'on or off'.">Default/Suggested Value</label>
+				</th>
+				<th>
+					<label class='popupLabel' data-toggle='tooltip' title="Warnings displayed to the user up-front">Warnings</label>
+				</th>
+				<th>
+					<label class='popupLabel' data-toggle='tooltip' title="Information displayed to user as a tooltip in hover text">Tooltip</label>
+				</th>
+			</tr>
+			</thead>
+			<tbody id='paramsTableBody'></tbody>
+		</table>
+		<div class="row scriptSpecific">
+			<label for='caveatsInput' id="caveatsLabel" class="span1 programmerLabel" data-toggle='tooltip' title="This text is displayed up-front to the user when the script is loaded. It can be used to specify critical information on using the script">Caveats</label>
+			<div class='span12'>
+				<textarea class="input-xlarge input-block-level" id='caveatsInput' class='input-block-level' type='text' placeholder="Eg: Output of this command appears in terminal"></textarea>
+			</div>
+			<label for='generalInstructionsInput' id="generalInstructionsLabel" class="span2 programmerLabel" datal-toggle='tooltip' title="This text is displayed to the user in a popup window when the user clicks on a button labeled 'Instructions'">General instructions</label>
+			<div class='span12'>
+				<textarea class="input-xlarge input-block-level" id='generalInstructionsInput' type='text' placeholder="Eg: If you have more questions, email xyz@gmail.com" ></textarea>
+			</div>
+			<div class = 'span12'>
+				<label> Last saved at: <span id='lastSavedAt'>Never</span></label>
+			</div>
+			<div class='span3'>
+				<a href='#saveBeforeExit' data-toggle='modal' id='mainCancelBtn' class="btn btn-block">Cancel</a>
+			</div>
+			<div class='span3'>
+				<a class='btn btn-block' data-toggle='modal' href='#saveAs' id='saveAsBtn'>Save As</a>
+			</div>
+			<div class='span3'>
+				<button class='btn btn-block' id='saveBtn'>Save</button>
+			</div>
+			<div class='span3'>
+				<a class='btn btn-block btn-primary' data-toggle='modal' href='#saveNshare' id='saveNshareBtn'>Save & Share</a>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<div class="modal hide fade" id='staticTextWindow'>
+		<div class='modal-header'>
+			<a class='close' data-dismiss='modal'>×</a>
+			<h3 id="staticTextWindowHeader">Enter segment of static text</h3>
+		</div>
+		<div class='modal-body' id='staticTextWindowBoundary'>
+			<input id='staticTextInput' class="input-block-level warningTooltip" data-toggle='tooltip' title='Required' type='text' placeholder="Eg:   'head'   '| less'   'python x.py'   etc."></input>
+		</div>
+		<div class='modal-footer'>
+			<a href='#' class='btn' data-dismiss='modal'>Cancel</a>
+			<a href='#' class='btn btn-primary' id='popupAddStaticTextBtn'>Add Static Text</a>
+		</div>
+	</div>
+	
+	
+	<div class='modal hide fade' id='addParamWindow'>
+		<div class='modal-header'>
+			<a class='close' data-dismiss='modal'>×</a>
+			<h3 id="addParamWindowHeader" >Add Parameter/Flag</h3>
+		</div>
+		<div class='modal-body' id='addParamWindowBody'>
+			<div class='row'>
+				<div class='span2'>
+					<label id='aliasLabel' class="paramLabel" for='aliasInput'><a href='#' data-toggle='tooltip' title="Programmer-defined name for referring to the parameter/flag" class="btn btn-link info" tabIndex='-1'><i class='icon-question-sign' tabIndex='-1'></i></a>Alias</label>
+				</div>
+				<div class='span3'>
+					<input id='aliasInput' class="input-block-level aFormInput warningTooltip" title='Required' data-toggle='tooltip' type='text' placeholder="Eg: num_of_iterations"></input>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='span2'>
+					<label id='typeLabel' class="paramLabel" for='typeInput'><a href='#' data-toggle='tooltip' title="Category of the input" class="btn btn-link info" tabIndex='-1'><i class='icon-question-sign' tabIndex='-1'></i></a>Input Type</label>
+				</div>
+				<div class='span3'>
+					<select id='typeInput' class="input-block-level warningTooltip" data-toggle='tooltip' title="Required">
+						<option>Select...</option>
+						<option value='Flag'>Flag</option> <!-- these need to be consistent with InputType in parse_objects.js -->
+						<option value='String'>String</option>
+						<option value='Integer'>Integer</option>
+						<option value='Float'>Float</option>
+					</select>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='span2'>
+					<label id='prefixFlagLabel' class="paramLabel" for='prefixFlagInput'><a href='#' data-toggle='tooltip' title="The prefix/flag (if any) that comes before the parameter; can be blank, but required if input type is set to flag." class="btn btn-link info" tabIndex='-1'><i class='icon-question-sign' tabIndex='-1'></i></a>Prefix/Flag</label>
+				</div>
+				<div class='span3'>
+					<input id='prefixFlagInput' class="input-block-level aFormInput warningTooltip" data-toggle='tooltip' title="Required for flags" type='text' placeholder="Eg: -v or --verbosity. Can be blank."></input>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='span2'>
+					<label id='ufNameLabel' class="paramLabel" for='ufNameInput'><a href='#' data-toggle='tooltip' title="A user friendly name visible to the users; this is how the input field will be labelled" class="btn btn-link info" tabIndex='-1'><i class='icon-question-sign' tabIndex='-1'></i></a>User-Friendly Name</label>
+				</div>
+				<div class='span3'>
+					<input id='ufNameInput' class="input-block-level aFormInput warningTooltip" data-toggle='tooltip' title='Required' type='text' placeholder="Eg: 'Detailed Output?'"></input>
+				</div>
+			</div>
+			<div class='row' id="requiredInputRow">
+				<div class='span2'>
+					<label id='requiredLabel' class="paramLabel exitAddParamOnEnter"  for='requiredInput'><a href='#' data-toggle='tooltip' title="Check if the parameter is required; does not apply to flags" class="btn btn-link info" tabIndex='-1'><i class='icon-question-sign' tabIndex='-1'></i></a>Required?</label>
+				</div>
+				<div class='span3 aFormCheckbox'>
+					<input id='requiredInput' type='checkbox'></input>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='span2'>
+					<label id='defaultValLabel' class="paramLabel" for='defaultValInput'><a href='#' data-toggle='tooltip' title="For optional parameters, this is a default value that appears with pending delete. For required parameters, this is a suggested value that appears as a placeholder. For flags, this is 'on or off'." class="btn btn-link info" tabIndex='-1'><i class='icon-question-sign' tabIndex='-1'></i></a><span id='defaultValLabelSpan'>Default Value</span></label>
+				</div>
+				<div class='span3'>
+					<input id='defaultValInput' class="input-block-level aFormInput exitAddParamOnEnter" type='text' placeholder="Eg: '100'"></input>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='span2'>
+					<label id='warningsLabel' class="paramLabel" data-toggle='tooltip' title="Warnings displayed to the user up-front" for='warningsInput'><a href='#' data-toggle='tooltip' title="Warnings displayed to the user up-front" class="btn btn-link info" tabIndex='-1'><i class='icon-question-sign' tabIndex='-1'></i></a>Warnings</label>
+				</div>
+				<div class='span3'>
+					<textarea id='warningsInput' class="input-xlarge input-block-level exitAddParamOnEnter" type='text' placeholder="Eg: 'File paths must be absolute'"></textarea>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='span2'>
+					<label id='tooltipLabel' class="paramLabel" for='tooltipInput'><a href='#' data-toggle='tooltip' title="Information displayed to user as a tooltip in hover text" class="btn btn-link info" tabIndex='-1'><i class='icon-question-sign' tabIndex='-1'></i></a>Tooltip</label>
+				</div>
+				<div class='span3'>
+					<textarea id='tooltipInput' class="input-xlarge input-block-level exitAddParamOnEnter" type='text' placeholder="Eg: 'Enter path to the input file'"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class='modal-footer'>
+			<a href='#' class='btn' data-dismiss='modal'>Cancel</a>
+			<a href='#' class='btn btn-primary paramBtn' id='popupAddParameterBtn'>Add Parameter/Flag</a>
+		</div>
+	</div>
+	
+	<div class="modal hide fade" id='editWarningsWindow'>
+		<div class = 'modal-header'>
+			<a class='close' data-dismiss='modal'>×</a>
+			<h3>View/Edit Warnings</h3>
+		</div>
+		<div class='modal-body'>
+			<textarea id='editWarningsInput' class="input-xlarge input-block-level" type='text'></textarea>
+		</div>
+		<div class='modal-footer'>
+			<a href='#' class='btn' data-dismiss='modal'>Cancel</a>
+			<a href='#' id='warningsSaveEditsBtn' class="btn btn-primary" data-dismiss='modal'>Save Edits</a>
+		</div>
+	</div>
+	
+	<div class="modal hide fade" id='editTooltipWindow'>
+		<div class = 'modal-header'>
+			<a class='close' data-dismiss='modal'>×</a>
+			<h3>View/Edit Tooltip</h3>
+		</div>
+		<div class='modal-body'>
+			<textarea id='editTooltipInput' class="input-xlarge input-block-level" type='text'></textarea>
+		</div>
+		<div class='modal-footer'>
+			<a href='#' class='btn' data-dismiss='modal'>Cancel</a>
+			<a href='#' id='tooltipSaveEditsBtn' class="btn btn-primary" data-dismiss='modal'>Save Edits</a>
+		</div>
+	</div>
+	
+	<div class="modal hide fade" id='saveBeforeExit'>
+		<div class='modal-header'>
+			<a class='close' data-dismiss='modal'>×</a>
+			<h3>Save before exiting?</h3>
+		</div>
+		<div class='modal-footer'>
+			<a href='./programmer_facing.html' class='btn' >No</a>
+			<a id="yesSaveBeforeExit" class='btn btn-primary'>Yes</a>
+		</div>
+	</div>
+	
+	
+	<div class='modal hide fade' id='saveAs'>
+		<div class='modal-header'>
+			<a class='close' data-dismiss='modal'>×</a>
+			<h3>Save As</h3>
+		</div>
+		<div class='modal-body'>
+			<input id='saveAsName' class='input-block-level' type='text' placeholder="Enter new file name"></input>
+		</div>
+		<div class='modal-footer'>
+			<a href='#' class='btn' data-dismiss='modal'>Cancel</a>
+			<a href='#' class="btn btn-primary" id='saveAsBtnPopup' data-dismiss='modal'>Save</a>
+		</div>
+	</div>
+	
+	<div class='modal hide fade' id='saveNshare'>
+		<div class='modal-header'>
+			<a class='close' data-dismiss='modal'>×</a>
+			<h3>Enter comma-separated email addresses</h3>
+		</div>
+		<div class='modal-body'>
+			<textarea autofocus id='emails' class='input-xlarge input-block-level' type='text' placeholder='Eg: abc@mit.edu, xyz@gmail.com'></textarea>
+		</div>
+		<div class='modal-footer'>
+			<a href='#' class='btn' data-dismiss='modal'>Cancel</a>
+			<a href='#' class='btn btn-primary' id='share' data-dismiss='modal'>Share</a>
+		</div>
+	</div>
+	
+	<div class="modal hide fade" id='moreInfoWindow'>
+		<div class='modal-header'>
+			<a class='close' data-dismiss='modal'>×</a>
+			<h3> Usage instructions </h3>
+		</div>
+		<div class='modal-body'>
+			<p> Commands are constructed as chunks of 'static text' and parameters/flags.</p>
+			<p>'Static text' refers to parts of the command that are not associated with parameters or flags and which are the same accross all uses of the command. Parameters/flags depend on user input.</p>
+			<p>For example, in the command: </p>
+			<p> <span class='cmd'>perl /home/X/montecarlo.pl [-v] [-n numIterations] <inputFile> | less </span></p>
+			<p>The chunks of static text are:</p>
+			<ul>
+			<li> perl /home/X/montecarlo.pl </li>
+			<li> | less </li>
+			</ul>
+			<p> And the chunks of parameters/flags are:</p>
+			<ul>
+			<li> -v (verbosity flag)</li>
+			<li> -n numIterations (integer parameter, alias numIterations, with prefix -n) </li>
+			<li> inputFile (string parameter, no prefix)</li>
+			</ul>
+			<p> The result looks as follows: </p>
+			<center><img class='framedImg' src='../images/chunks.png'></img></center>
+			<p> Once added, the order of the chunks can be changed by dragging and dropping the chunks. </p>
+		</div>
+		<div class='modal-footer'>
+			<a href='#' class='btn' data-dismiss='modal'>Close</a>
+		</div>
+	</div>
+	
+	
+</div>
+
+
+
+</body>
+</html>

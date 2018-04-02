@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Create an Account &middot; BioMate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sumaiya Nazeen">
+
+    <!-- Styles -->
+    <link href='http://fonts.googleapis.com/css?family=Tulpen+One' rel='stylesheet' type='text/css'>
+	<link href="../external/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="../css/biomate_signup.css" rel="stylesheet">
+    <link href="../external/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../external/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../external/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../external/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../external/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../external/bootstrap/ico/favicon.png">
+  
+	<!-- javascript
+    ================================================== -->
+    <script type="text/javascript" src="../external/jquery/js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="../external/jquery/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../external/jquery/js/parse-1.2.7.min.js"></script>
+	<script type="text/javascript" src="../jscript/biomate_util.js"></script>
+    <script type="text/javascript" src="../jscript/parse_objects.js"></script>
+	<script type="text/javascript" src="../jscript/biomate_signup.js"></script>
+    <script type="text/javascript" src="../external/bootstrap/js/bootstrap.js"></script>
+  </head>
+
+  <body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container" id="topNav">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" id="bioMateBrand" href="biomate_login.html">BioMate</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+				<li></li>
+				<li></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+	    <div class="row">
+			<div class="span2">
+			</div>
+			<div class="span8">
+			<form class="form-signup">
+				<legend>Sign Up</legend>
+				<div class="errorMessage" id="err"></div>
+				<div class="control-group">
+					<label class="control-label">Name</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<input type="text" id="name" class="input-xlarge" name="name" placeholder="Name" autofocus="autofocus">
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Email</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<input type="text" class="input-xlarge" id="email" name="email" placeholder="Email">
+						</div>
+					</div>	
+				</div>
+				<div class="control-group">
+					<label class="control-label">Password</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<input type="Password" id="passwd" class="input-xlarge" name="passwd" placeholder="Password">
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+				<label class="control-label" for="input01"></label>
+				  <div class="controls">
+				   <button type="submit" class="btn btn-large btn-primary" id="btnSignUp">Create My Account</button>
+				  </div>
+				</div>
+			</div>
+			</form>
+			<div class="modal hide fade" id="success">
+				<div class="modal-header">
+				  <a href="#" class="close" id="close1" data-dismiss="modal">×</a>
+				  <h3>Success!</h3>
+				</div>
+				<div class="modal-body">
+				  <p>Your account has been created successfully.</p>
+				</div>
+				<div class="modal-footer">
+				  <a href="#" class="btn" id="close2" data-dismiss="modal">Close</a>
+				</div>
+			</div>
+		</div>
+		
+    </div> <!-- /container -->
+	
+    
+  </body>
+</html>

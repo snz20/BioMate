@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Home &middot; BioMate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Sumaiya Nazeen">
+
+    <!-- styles -->
+    <link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Tulpen+One' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,400italic,500' rel='stylesheet' type='text/css'>
+    <link href="../external/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="../external/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="../external/bootstrap/css/bootstrap.min.css">
+    <link href="../css/biomate_home.css" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../external/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../external/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../external/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../external/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../external/bootstrap/ico/favicon.png">
+  
+	<!-- javascript
+    ================================================== -->
+	
+    <script type="text/javascript" src="../external/jquery/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../external/jquery/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../external/jquery/js/parse-1.2.7.min.js"></script>
+	<script type="text/javascript" src="../external/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../jscript/biomate_util.js"></script>
+    <script type="text/javascript" src="../jscript/parse_objects.js"></script>
+    <script type="text/javascript" src="../jscript/biomate_home.js"></script> 
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container" id="topNav">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" id="bioMateBrand" href="biomate_home.html">BioMate</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+		<li><p class="navbar-text" id="userName"></p></li>
+ 		<li><a href="biomate_home.html"><i class="icon-home icon-white"></i></a></li>
+		<li><button class="btn btn-danger" type="submit" id="btnSignOut">
+			<i class="icon-off icon-white"></i>
+		</button></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="container">
+	  <div class="masthead">
+      </div>
+	  <div id="divCircle">
+        	<!--div id="middleBubble">&nbsp;</div>
+			<a href="lab_bench_view.html"><img src="../images/runScript-off.png" id="runScript" data-bubble1="Use a<br />Script"></a>
+			<a data-toggle="modal" href="#historyTable" class="history"><img src="../images/history-off.png" id="history" data-bubble1="<br />History"></a>
+			<a data-toggle="modal" href="#noteTable" class='notes'><img src="../images/notes-off.png" id="notes" data-bubble1="My<br />Notes"></a>
+			<a href="programmer_facing.html"><img src="../images/createScript-off.png" id="createScript" data-bubble1="Create or Edit<br />a Script" class="homepageGridDefault"></a-->
+			<button class="btn btnHome" id="btnUseScript">
+				<span ><img id="runScript" src="../images/runScript-off.png"></img><br/></span>
+				Use a<br />Script
+			</button>
+			<button class="btn btnHome" id="btnHistory">
+				<span ><img id="history" src="../images/history-off.png"></img><br/></span>
+				History<br/>
+			</button>
+			<button class="btn btnHome" id="btnNotes">
+				<span ><img id="notes" src="../images/notes-off.png"></img><br/></span>
+				Notes<br/>
+			</button>
+			<button class="btn btnHome" id="btnCreateScript">
+				<span ><img id="createScript" src="../images/createScript-off.png"></img><br/></span>
+				Create or Edit<br />a Script
+			</button>
+      </div>
+	  
+	  <div id="historyTable" class="modal hide fade in" style="display: none; ">  
+		<div class="modal-header">  
+			<a class="close" data-dismiss="modal">×</a>  
+			<h3>History</h3>  
+		</div>  
+		<div class="modal-body">  
+			<table width="500px" class="table table-hover table-striped">
+				<thead>
+                    <tr>
+                        <th>Script Name</th>
+                        <th>Script Owner</th>
+                        <th>Last Accessed</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                </tbody>
+			</table>             
+		</div>  
+		<div class="modal-footer">  
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+		</div>  
+	  </div>
+	  <div class="modal hide fade" id="noteTextPopup">
+		<div class="modal-header">
+		  <a class="close" data-dismiss="modal">×</a>
+		  <h3 id="noteHeader"></h3>
+		</div>
+		<div class="modal-body">
+		  <textarea rows="5" class="input-block-level" id="noteText" autofocus></textarea>
+		</div>
+		<div class="modal-footer">
+		  <a href="#" class="btn" data-dismiss="modal">Close</a>
+		  <a href="#" id="saveNoteBtn" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+		</div>
+	  </div>
+			    
+	  <div id="noteTable" class="modal hide fade in" style="display: none; ">  
+		<div class="modal-header">  
+			<a class="close" data-dismiss="modal">×</a>  
+			<h3>My Notes</h3>  
+		</div>  
+		<div class="modal-body">  
+            <table  class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Script Owner</th>
+                        <th>Last Modified</th>
+                    </tr>
+                </thead>
+                <tbody id="notesTableBody">
+                </tbody>
+		  </table>             
+		</div>  
+		<div class="modal-footer">  
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+		</div>  
+	  </div>
+      <div class="modal hide fade" id="notify">
+		<div class="modal-header">
+			<a href="#" class="close" id="closeNotification1" data-dismiss="modal">×</a>
+			<h3>Notification</h3>
+		</div>
+		<div class="modal-body">
+		<p><b><span id="collabName"></span></b> has shared <b><span id="curScriptName"></span></b> script with you. Click on <b>"Use a Script"</b> and select it from the dropdown list to start using it.</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" id="closeNotification2" data-dismiss="modal">Close</a>
+		</div>
+	  </div>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>

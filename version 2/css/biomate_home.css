@@ -1,0 +1,119 @@
+body {
+	padding-top: 85px;
+	padding-bottom: 40px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+}
+
+.container{ 
+	width: 100%; 
+	text-align:center;
+}
+	
+#topNav{
+	width=80%;
+}
+	
+#divCircle {
+	margin-left:auto; 
+	margin-right:auto; 
+	width: 450px;
+	height: 450px;	
+	position: relative;
+}
+
+#btnUseScript{
+	-webkit-border-radius: 30x;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	font-size: 1.2em;
+	position: absolute;
+	height: 35%;
+	width:35%;
+}
+
+#btnHistory{
+	-webkit-border-radius: 30x;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	font-size: 1.2em;
+	position: absolute;
+	height: 35%;
+	width:35%;
+}
+
+#userName{
+	font-size:1.2em;
+	color:white;
+	cursor: default;
+}
+
+img{
+	width: 80%;
+	height: 80%;
+}
+
+textarea{
+	resize: none;
+}
+
+#btnNotes{
+	-webkit-border-radius: 30x;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	font-size: 1.2em;
+	position: absolute;
+	height: 35%;
+	width:35%;
+}
+
+#btnCreateScript{
+	-webkit-border-radius: 30x;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	font-size: 1.2em;
+	position: absolute;
+	height: 35%;
+	width:35%;
+}
+
+#middleBubble {
+  text-align:center;
+  cursor: default;
+  vertical-align:middle;
+  background: url(../images/grassb.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #252525; /*#6d6e71*/
+  font-size: 1em;
+  height:35%;		
+  width: 35%;	
+  margin: auto;
+  position: absolute;
+  text-align:center;
+}
+
+#middleBubble b{
+	font-size: 1.2em;
+}
+
+#middleBubble p{
+	margin: 2em;
+}
+
+#notesTableBody td:hover {
+    cursor: pointer;
+}
+
+#bioMateBrand {
+    font-size: 6em;
+    font-family: 'Tulpen One', cursive;
+/*    font-family: 'Economica', sans-serif;*/
+}
+
+body { padding-top: 10em; }
+
+.btnHome {
+    padding-bottom: 20px;
+}
+

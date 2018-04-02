@@ -1,0 +1,232 @@
+
+#chunksContainer {
+	border:1px solid gray;
+	height: 100px;
+	border-radius: 10px; 
+	padding: 2px;
+	list-style-type: none;
+}
+
+#infoMessage {
+	padding-top: 10px;
+	padding-left: 15px;
+	color: grey;
+}
+
+/* trying... */
+
+#chunksContainer li {
+	cursor: move;
+	position: relative;
+	float: left;
+}
+
+#lastSavedAt{
+	color: green;
+}
+.truncate {
+	/*width: 250px;*/
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#userName{
+	font-size:1.2em;
+	color:white;
+	cursor: default;
+}
+#lab-bench-layout .row {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+textarea{
+	resize: none;
+}
+
+.lab-bench-labels {
+	font-weight: bold;
+}
+
+.cmd {
+	font-weight: bold;
+	color: rgb(14,14,126);
+}
+
+.framedImg {
+	border:1px solid gray;
+	padding: 2px;
+	width: 400px;
+}
+
+#chunksLabel {
+	font-size: 12;
+}
+
+#programmer-layout .row {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.ui-autocomplete {
+	max-height: 200px;
+	overflow-y: auto;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+	/* add padding to account for vertical scrollbar */
+	padding-right: 20px;
+}
+
+.ui-widget {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.modal-body {
+}
+
+#staticTextWindowBody {
+	overflow-y: visible; 
+}
+
+#addParamWindowBody {
+	overflow-y: visible; 
+}
+
+
+#enterTitle {
+	display: inline;
+	margin-left: 0px;
+	width: 400px;
+}
+
+#createLoadScriptBtn {
+	margin-left: 5px;
+	margin-bottom: 10px;
+	height: 32px;
+}
+
+
+
+.tooltip {
+	z-index: 2000;
+}
+
+.popoverButton {
+	display: block;
+}
+
+.chunk {
+	margin: 2px;
+	font-size: 15;
+	cursor: hand;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#saveBeforeExit {
+	width: 400px;
+	margin-left: -200px;
+}
+
+#paramsTable {
+	margin-top: 20px;
+}
+
+.lab-bench-labels {
+	font-weight: bold;
+}
+
+.tdBtn {
+}
+
+.staticTextBtn {
+	background-color: hsl(107, 79%, 37%) !important;
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3fcd18", endColorstr="#34a813");
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#3fcd18), to(#34a813));
+	background-image: -moz-linear-gradient(top, #3fcd18, #34a813);
+	background-image: -ms-linear-gradient(top, #3fcd18, #34a813);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3fcd18), color-stop(100%, #34a813));
+	background-image: -webkit-linear-gradient(top, #3fcd18, #34a813);
+	background-image: -o-linear-gradient(top, #3fcd18, #34a813);
+	background-image: linear-gradient(#3fcd18, #34a813);
+	border-color: #34a813 #34a813 hsl(107, 79%, 35%);
+	color: #fff !important;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.13);
+	-webkit-font-smoothing: antialiased;
+}
+
+.paramLabel {
+	margin-top: 5px;
+	color: rgb(14,14,126);
+}
+
+.programmerLabel {
+	color: rgb(14,14,126);
+	font-weight: bold;
+}
+
+
+#theScriptName {
+	font-weight: bold;
+	font-size: 30;
+	height: 40px;
+}
+
+.aFormInput {
+	height: 40px;
+}
+
+.aFormCheckbox {
+	height: 40px;
+}
+
+.icon-question-sign {
+	margin-top: 0px;
+	paddix-left: 0px;
+}
+
+.paramBtn {
+	background-color: hsl(215, 79%, 37%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1863cd", endColorstr="#1351a8");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#1863cd), to(#1351a8));
+  background-image: -moz-linear-gradient(top, #1863cd, #1351a8);
+  background-image: -ms-linear-gradient(top, #1863cd, #1351a8);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1863cd), color-stop(100%, #1351a8));
+  background-image: -webkit-linear-gradient(top, #1863cd, #1351a8);
+  background-image: -o-linear-gradient(top, #1863cd, #1351a8);
+  background-image: linear-gradient(#1863cd, #1351a8);
+  border-color: #1351a8 #1351a8 hsl(215, 79%, 35%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.13);
+  -webkit-font-smoothing: antialiased;
+}
+
+input[type="text"].tableDataInput {
+	height: 20px;
+	max-width: 70px;
+}
+
+.tableDataSelect {
+	min-width: 70px;
+}
+
+#bioMateBrand {
+    font-size: 6em;
+    font-family: 'Tulpen One', cursive;
+}
+
+body { padding-top: 10em; }
+
+
+

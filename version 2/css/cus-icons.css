@@ -1,0 +1,50 @@
+/* icons */
+[class^="cus-"],
+[class*=" cus-"] {
+  display: inline-block;
+  width: 17px;
+  height: 16px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("../images/cus-icons2.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+[class^="cus-"]:last-child,
+[class*=" cus-"]:last-child {
+  *margin-left: 0;
+}
+
+/* White icons with optional class, or on hover/focus/active states of certain elements */
+
+.cus-white,
+.nav-pills > .active > a > [class^="cus-"],
+.nav-pills > .active > a > [class*=" cus-"],
+.nav-list > .active > a > [class^="cus-"],
+.nav-list > .active > a > [class*=" cus-"],
+.navbar-inverse .nav > .active > a > [class^="cus-"],
+.navbar-inverse .nav > .active > a > [class*=" cus-"],
+.dropdown-menu > li > a:hover > [class^="cus-"],
+.dropdown-menu > li > a:focus > [class^="cus-"],
+.dropdown-menu > li > a:hover > [class*=" cus-"],
+.dropdown-menu > li > a:focus > [class*=" cus-"],
+.dropdown-menu > .active > a > [class^="cus-"],
+.dropdown-menu > .active > a > [class*=" cus-"],
+.dropdown-submenu:hover > a > [class^="cus-"],
+.dropdown-submenu:focus > a > [class^="cus-"],
+.dropdown-submenu:hover > a > [class*=" cus-"],
+.dropdown-submenu:focus > a > [class*=" cus-"] {
+  background-image: url("../images/cus-icons.png");
+}
+
+/* icons code below */
+.cus-createScriptIcon{ background-position: 0 0; width: 16px; height: 16px; } 
+.cus-historyIcon{ background-position: -21px 0; width: 16px; height: 16px; } 
+.cus-notesIcon{ background-position: -42px 0; width: 16px; height: 16px; } 
+.cus-runScriptIcon{ background-position: -63px 0; width: 16px; height: 16px; } 
+.cus-createScriptIconWhite{ background-position: 0 0; width: 16px; height: 16px; } 
+.cus-historyIconWhite{ background-position: -21px 0; width: 16px; height: 16px; } 
+.cus-notesIconWhite{ background-position: -42px 0; width: 16px; height: 16px; } 
+.cus-runScriptIconWhite{ background-position: -63px 0; width: 16px; height: 16px; } 
+

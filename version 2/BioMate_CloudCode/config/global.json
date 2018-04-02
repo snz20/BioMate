@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "BioMate": {
+            "applicationId": "C9TPknemAEmJzz1xcKFbBC855l64A4T4R2EFjxBH", 
+            "masterKey": "xbtVNH4y4LXfJ45vPMtSePZ9AfzNgv981e1UwGDO"
+        }, 
+        "_default": {
+            "link": "BioMate"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.7"
+    }
+}
